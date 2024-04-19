@@ -82,7 +82,8 @@ if page == "Orders":
                 df_delivered = pd.DataFrame()
 
             # Append the new order to the delivered orders DataFrame
-            df_delivered = df_delivered.append(df)
+            df_delivered = pd.concat([df_delivered, df])
+
 
             # Add the order number and date/time to the DataFrame
             df_delivered['Order Number'] = generate_order_number()
