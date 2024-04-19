@@ -46,7 +46,6 @@ try:
         availability = json.load(f)
 except json.JSONDecodeError:
     print("Error: JSON file is empty or not properly formatted")
-    availability = {menu_name: {item: {'price': price, 'available': True} for item, price in menu.items()} for menu_name, menu in menus.items()}
 except FileNotFoundError:
     # If the file doesn't exist, initialize all items as available
     availability = {menu_name: {item: {'price': price, 'available': True} for item, price in menu.items()} for menu_name, menu in menus.items()}
