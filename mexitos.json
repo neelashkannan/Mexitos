@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mexitos-robonium",
+  "private_key_id": "9122e825ab9fd76f2019fa3fcf190a64a78381e5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9YsQwkHMcZ4e0\nL1LHROxKjeVQjBRCCVCxZZqHcEqFDEwVyNEK//iCxhvWFgGV3U95DXYUu7t1OB8v\nf1czlcrd3NP0LYVSxGbUi0ic41ss72fAtNBCeZ2IbpC6BgmTLmKc2hoa/q6QEKgq\n0HZQH0Jz7EzpbMF3IstP9g5+NE94lGgq+wlvN7wWgDrnhTQee0YHLaFl4OB1SNc9\n3YP0OfQjeSS81KrlNhFbwYttZSSFa00NrwO6cmw29dni4KFYGa7WoAhQGNW/YQcS\nj9OAcF2Ur6bOoiOjgrQFIGSNJsw5JiIztFn8aupxvyRfl9jy333Mvum3G9ZrMU2N\nj3PQHJRvAgMBAAECggEASyk69pEldhTqiQqs/hOu+Wm2JBDr60daJIVP3kek84et\nXInt2ME8xd3M51qld241H7RFdDYLUBqdWdLeb0UYFZQR9Frqii4TJ3A9ubILmdpL\noXHBI1izuhUzT/icbTKgBWMTsDn6WoeZziAcjHDThUE3Rv6YC2meKdZb6x9kmNQR\n65Qcyi03hez0sRsyqrKTddoxnzmrrnsGJi8Agt5jc23VPkdjeKS62Ndsm88kI8bU\np1nB4J9yT/Czn22hEgRTG9vEwhOl3L1VpKON7p0r7di4d3Ej2FFGXnwiLRo4q33m\ntiRbd8sZ9kwoiu6jCrr/NNGvATtyxrGIyS/SrG7+ZQKBgQDujxkKSzo4wQFlZ2Ep\nv87PLgXQjno5QtIu+PW6sHbyq6sDeTYfyArbMQnmrXyzHm6Lz9+FbluKeYyx+2cN\n/S2S/KC1e0868z6g8GVKgVRp7356NyGhwSwJdilWH0NSxMnwsAMU9jArV6I6htOJ\nREAcFx+rnhX7RNUob/6LtwuhGwKBgQDLO1Y6jCOlY0e4LI3PlMzp4kSqIaU7pqNb\nIstnO+2U3LGLovAx3wQXqgDpe5um32+X9H6C7yrjLtTSr6Fz5t6nHLJYAUbclg6z\nQo+c0pwmj4by8T2OMpVvcQYjdJ80Km6WT8b3ag6TVAZ+YoL8iJNnZngiiNRyQuAt\nnMPoP3mjPQKBgQCrtJ2+VgUzAmCB31YFGcS+RI703QhGHL1yB8m+tPL4me0+U8lM\nOMzvla1dtrNRrW69/UISJSuIURKerKgxXnCmImV+GqIdeSUz67PMW6gpk7MCPppb\nddG/gaghD+GCOphrQBUHymdDWxEudQre+xv13AL0oJWLxLB0KaAaagbZzwKBgEh3\nwxqjZ/6MdUF2GacgbyUi+ssTrkCj/fH8aT1JgEEppOGe2zldRa9Ofn7DBdCuMbOk\nigwUTl2uEFOELvUOKOy77dg1tFfp5hoDrQQFkYqqeTtdzE5NOT4AtmikKDTIwKA2\nmEMW/VWJi7s7U2vLI4ymXEYsNlz7/cYl9TF2mOAdAoGBALbSI55v1yJ+Xu3k+620\nkFNqVHBUh1WNo8KMuHdx/lz7p6Fs6Q6RYO3U9ejpthsNmZLSCUWMznsvgiDC19vN\nx+cKq0bKgAeSMCe49wXzXyRe96o9aH0ANWPrJFjQW49eWRQS14YmCHreiaQFgSqz\nSuCLUWIs0k3NwjF+ul55fAOs\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-pooib@mexitos-robonium.iam.gserviceaccount.com",
+  "client_id": "117241653368085477526",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pooib%40mexitos-robonium.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
