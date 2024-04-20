@@ -6,7 +6,7 @@ import time
 # Initialize Firebase
 if not firebase_admin._apps:
     # Initialize Firebase with your credentials
-    cred = credentials.Certificate('testing.json')
+    cred = credentials.Certificate('C:\\Users\\Robonium\\Desktop\\OneDrive\\Documents\\codes\\food ordering\\testing.json')
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://food-or-e1dd3-default-rtdb.asia-southeast1.firebasedatabase.app/'
     })
@@ -133,6 +133,18 @@ order_number = last_order_number + 1
 
 if len(st.session_state['cart']) > 0:
     if st.button('Order Now'):
+        # Generate the next order number by incrementing the last order number
+        last_order_number = ref.child('last_order_number').get()
+        if last_order_number is None:
+            last_order_number = 0  # Set default last order number if it doesn't exist yet
+        order_number = last_order_number + 1
+
         # Save the cart details, price, and total to Firebase using the order number as the key
         order_data = {'cart': st.session_state['cart'], 'total': total}
-        ref.child('orders').child(str(order_number)).set(order_data)  # Use order number as the
+        ref.child('orders').child(str(order_number)).set(order_data)  # Use order number as the key
+
+        # Update the last order number in Firebase
+        ref.child('last_order_number').set(order_number)
+
+        # Show a success message
+        st.success(f"Order placed successfully! Your order number is {order_number}.")
