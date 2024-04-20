@@ -27,7 +27,7 @@ food_items = {
 # Initialize Firebase
 if not firebase_admin._apps:
     # Initialize Firebase with your credentials
-    cred = credentials.Certificate('testing.json')
+    cred = credentials.Certificate('C:\\Users\\Robonium\\Desktop\\OneDrive\\Documents\\codes\\food ordering\\testing.json')
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://food-or-e1dd3-default-rtdb.asia-southeast1.firebasedatabase.app/'
     })
@@ -75,8 +75,6 @@ if page == "Orders":
                     st.rerun()
             else:
                 st.warning(f"Order {order_number} data is incomplete or unavailable.")
-            time.sleep(15)
-            st.rerun()
 
 elif page == "Chicken Dry":
     st.markdown(f"## Chicken Dry Menu")
