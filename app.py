@@ -3,6 +3,12 @@ import json
 import os
 import pandas as pd
 
+custom_theme = {
+    "backgroundColor": "#f8f9fa",  # Set the background color
+    "secondaryBackgroundColor": "#f8f9fa",  # Set the secondary background color
+    "textColor": "#000000",  # Set the text color
+    "font": "sans-serif"  # Set the font family
+}
 # Set page title and favicon
 st.set_page_config(
     page_title="Mexitos",
