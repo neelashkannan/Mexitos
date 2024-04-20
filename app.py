@@ -6,7 +6,7 @@ import pandas as pd
 # Set page title and favicon
 st.set_page_config(
     page_title="Mexitos",
-    page_icon=":hamburger:"
+    page_icon=":hamburger:",
     theme=custom_theme
 )
 
