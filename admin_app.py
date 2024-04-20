@@ -75,6 +75,8 @@ if page == "Orders":
                     st.rerun()
             else:
                 st.warning(f"Order {order_number} data is incomplete or unavailable.")
+            time.sleep(15)
+            st.rerun()
 
 elif page == "Chicken Dry":
     st.markdown(f"## Chicken Dry Menu")
