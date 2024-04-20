@@ -7,6 +7,7 @@ import pandas as pd
 st.set_page_config(
     page_title="Mexitos",
     page_icon=":hamburger:"
+    theme=custom_theme
 )
 
 # Load the availability status
