@@ -13,6 +13,11 @@ if not firebase_admin._apps:
 
 # Get a reference to the Firebase database
 ref = db.reference('/')
+
+st.set_page_config(
+    page_title="Mexitos",
+    page_icon=":hamburger:"
+)
 custom_css = """
         <style>
         /* Hide Streamlit footer */
@@ -26,10 +31,7 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # Set page title and favicon
-st.set_page_config(
-    page_title="Mexitos",
-    page_icon=":hamburger:"
-)
+
 
 order_number = int(time.time())
 # Fetch the "chicken fry" section from Firebase
