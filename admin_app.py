@@ -52,7 +52,14 @@ def on_order_added(order_snapshot):
     st.write(f"New order added: {order_data}")
     st.experimental_rerun()
 
-
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+[data-testid="stToolbar"] {visibility: hidden !important;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 if page == "Orders":
     st.markdown("# Orders")
