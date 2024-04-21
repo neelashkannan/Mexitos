@@ -4,13 +4,17 @@ from firebase_admin import credentials, db
 from chicken_dry_button import display_chicken_dry_button
 from bread_items_button import display_bread_items_button
 from firebase_data import fetch_chicken_dry_items, fetch_bread_items
+from shawarma_button import display_shawarma_button
+from rice_button import display_rice_button
+from starter_button import display_starter_items_button
 import time
 import datetime
+
 
 # Initialize Firebase (same as before)
 if not firebase_admin._apps:
     # Initialize Firebase with your credentials
-    cred = credentials.Certificate('testing.json')
+    cred = credentials.Certificate('C:\\Users\\Robonium\\Desktop\\OneDrive\\Documents\\codes\\food ordering\\testing.json')
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://food-or-e1dd3-default-rtdb.asia-southeast1.firebasedatabase.app/'
     })
@@ -27,7 +31,14 @@ st.set_page_config(
     page_icon=":hamburger:",
     layout="wide"
 )
-
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # Get the last order number from Firebase
 last_order_number = ref.child('last_order_number').get() or 0
 order_number = int(last_order_number) + 1
@@ -42,6 +53,14 @@ if 'button_state_chicken_dry' not in st.session_state:
 if 'button_state_bread' not in st.session_state:
     st.session_state['button_state_bread'] = False
 
+if 'button_state_shawarma' not in st.session_state:
+    st.session_state['button_state_shawarma'] = False
+
+if 'button_state_rice' not in st.session_state:
+    st.session_state['button_state_rice'] = False
+
+if 'button_state_starter' not in st.session_state:
+    st.session_state['button_state_starter'] = False
 # Main title (same as before)
 with st.container():
     st.markdown("<h1 style='text-align: center; '>Mexitos</h1>", unsafe_allow_html=True)
@@ -57,6 +76,12 @@ display_chicken_dry_button(ref, st.session_state)
 # Display Bread Items button
 display_bread_items_button(ref, st.session_state)
 
+display_shawarma_button(ref, st.session_state)
+
+display_rice_button(ref, st.session_state)
+
+display_starter_items_button(ref, st.session_state)
+
 # Display the cart and order button (same as before)
 with st.container():
     st.markdown("<h2 style='text-align: center; '>Your Cart</h2>", unsafe_allow_html=True)
@@ -64,7 +89,8 @@ with st.container():
     order_items = []
     for item_id, quantity in st.session_state['cart'].items():
         if quantity > 0:
-            item_data = ref.child('chicken fry').child(item_id).get() or ref.child('bread_items').child(item_id).get()
+            item_data = (ref.child('chicken fry').child(item_id).get() or ref.child('bread_items').child(item_id).get() or ref.child('shawarma').child(item_id).get() or ref.child('rice and noodles items').child(item_id).get()
+                        or ref.child('starters').child(item_id).get())
             if item_data:
                 item_name = item_data['item_name']
                 item_price = item_data['price']
