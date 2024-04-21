@@ -30,9 +30,18 @@ div[data-testid="stFooter"] {
 }
 </style>
 """
+custom_css1 = """
+<style>
+/* Hide Streamlit footer */
+div[data-testid="stFooter"] {
+    display: none !important;
+}
+</style>
+"""
 
 # Hide Streamlit header and footer
 st.markdown(custom_css, unsafe_allow_html=True)
+st.markdown(custom_css1, unsafe_allow_html=True)
 
 
 # Set page title and favicon
