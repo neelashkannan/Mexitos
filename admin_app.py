@@ -27,7 +27,7 @@ food_items = {
 # Initialize Firebase
 if not firebase_admin._apps:
     # Initialize Firebase with your credentials
-    cred = credentials.Certificate('C:\\Users\\Robonium\\Desktop\\OneDrive\\Documents\\codes\\food ordering\\testing.json')
+    cred = credentials.Certificate('testing.json')
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://food-or-e1dd3-default-rtdb.asia-southeast1.firebasedatabase.app/'
     })
