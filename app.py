@@ -119,3 +119,5 @@ if len(st.session_state['cart']) > 0 and name and phone_number:
         # Empty the cart after 5 seconds
         time.sleep(5)
         st.session_state['cart'] = {}
+else:
+    st.warning("please enter both name and phone number to place order")
