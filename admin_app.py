@@ -42,6 +42,21 @@ st.set_page_config(
     page_icon=":hamburger:"
 )
 
+custom_css = """
+<style>
+/* Hide Streamlit header and footer */
+div[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+div[data-testid="stFooter"] {
+    display: none !important;
+}
+</style>
+"""
+
+# Hide Streamlit header and footer
+st.markdown(custom_css, unsafe_allow_html=True)
 # Create a sidebar for navigation
 page = st.sidebar.selectbox("Choose a page", ["Orders", "Chicken Dry","Bread Items"])
 
