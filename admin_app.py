@@ -27,10 +27,13 @@ food_items = {
 # Initialize Firebase
 if not firebase_admin._apps:
     # Initialize Firebase with your credentials
-    cred = credentials.Certificate('testing.json')
+    cred = credentials.Certificate('C:\\Users\\Robonium\\Desktop\\OneDrive\\Documents\\codes\\food ordering\\testing.json')
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://food-or-e1dd3-default-rtdb.asia-southeast1.firebasedatabase.app/'
     })
+
+def get_current_date_time():
+    return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Get a reference to the Firebase database
 ref = firebase_db.reference('/')
@@ -42,23 +45,9 @@ st.set_page_config(
     page_icon=":hamburger:"
 )
 
-custom_css = """
-<style>
-/* Hide Streamlit header and footer */
-div[data-testid="stToolbar"] {
-    display: none !important;
-}
-
-div[data-testid="stFooter"] {
-    display: none !important;
-}
-</style>
-"""
-
-# Hide Streamlit header and footer
-st.markdown(custom_css, unsafe_allow_html=True)
 # Create a sidebar for navigation
 page = st.sidebar.selectbox("Choose a page", ["Orders", "Chicken Dry","Bread Items"])
+
 
 if page == "Orders":
     st.markdown("# Orders")
@@ -68,19 +57,24 @@ if page == "Orders":
             st.markdown(f"## Order {order_number}")
             cart = order_data.get('cart')
             total = order_data.get('total')
-            if cart is not None and total is not None:
+            name = order_data.get('name')
+            phone_number = order_data.get('phone_number')
+            order_date = order_data.get('order_date')
+            if cart is not None and total is not None and name is not None and phone_number is not None:
                 items_table = "| Item | Quantity | Price | Total |\n|---|---|---|---|\n"
                 order_total = 0
-                for item, item_data in cart.items():
+                for item_data in cart:
+                    item_name = item_data.get('item_name', 'N/A')
                     item_quantity = item_data.get('quantity', 0)
                     item_price = item_data.get('price', 0)
                     item_total = item_quantity * item_price
-                    items_table += f"| {item} | {item_quantity} | {item_price} | {item_total} |\n"
+                    items_table += f"| {item_name} | {item_quantity} | {item_price} | {item_total} |\n"
                     order_total += item_total
-                
                 items_table += f"| **Total Order Amount:** | | | {order_total} |\n"
                 st.markdown(items_table, unsafe_allow_html=True)
-
+                st.write(f"**Customer Name:** {name}")
+                st.write(f"**Phone Number:** {phone_number}")
+                st.write(f"**Order Date:** {order_date}")
                 if st.button(f"Mark Order {order_number} as Delivered"):
                     delivered_orders_ref = ref.child('delivered_orders')
                     delivered_orders_ref.push(order_data)
