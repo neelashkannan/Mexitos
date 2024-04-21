@@ -19,16 +19,21 @@ st.set_page_config(
     page_icon=":hamburger:"
 )
 custom_css = """
-        <style>
-        /* Hide Streamlit footer */
-        div[data-testid="stFooter"] {
-            display: none !important;
-        }
-        </style>
-        """
+<style>
+/* Hide Streamlit header and footer */
+div[data-testid="stToolbar"] {
+    display: none !important;
+}
 
-# Hide Streamlit watermark
+div[data-testid="stFooter"] {
+    display: none !important;
+}
+</style>
+"""
+
+# Hide Streamlit header and footer
 st.markdown(custom_css, unsafe_allow_html=True)
+
 
 # Set page title and favicon
 
