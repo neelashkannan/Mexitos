@@ -46,20 +46,13 @@ st.set_page_config(
 )
 
 # Create a sidebar for navigation
-page = st.sidebar.selectbox("Choose a page", ["Orders", "Chicken Dry","Bread Items","Shawarma", "rice/noodles/kothu", "Starters"])
+page = st.sidebar.selectbox("Choose a page", ["Orders", "Chicken Dry","Bread Items","Shawarma", "rice/noodles/kothu", "Starters", "Biryani"])
 def on_order_added(order_snapshot):
     order_data = order_snapshot.val()
     st.write(f"New order added: {order_data}")
     st.experimental_rerun()
 
-hide_streamlit_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-[data-testid="stToolbar"] {visibility: hidden !important;}
-</style>
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 if page == "Orders":
     st.markdown("# Orders")
@@ -336,6 +329,53 @@ elif page == "Starters":
         if new_item and price:
             # Save new item to Firebase under 'Shawarma'
             new_item_ref = ref.child('starters').push()
+            new_item_ref.set({
+                'item_name': new_item,
+                'price': price,
+                'available': True  # Default status is available
+            })
+            st.success("New starter item added successfully!")
+            # Refresh the page after adding new item
+            st.rerun()
+        else:
+            st.warning("Please enter both the starter items and price.")
+
+elif page == "Biryani":
+    st.markdown("## Biryani")
+
+    existing_items = ref.child('Biryani').get()
+    if existing_items:
+        for item_key, item_data in existing_items.items():
+            col1, col3, col4 = st.columns([1, 1, 1])
+            with col1:
+                st.write(f"{item_data['item_name']} - {item_data['price']} Rupees")
+            with col3:
+                status_options = ["Available", "Not Available"]
+                status_index = 0 if item_data.get('available') else 1
+                new_status = st.radio("", options=status_options, index=status_index, key=f"shawarma_status_{item_key}")
+                if new_status != status_options[status_index]:
+                    updated_status = True if new_status == "Available" else False
+                    ref.child('Biryani').child(item_key).update({'available': updated_status})
+                    st.success(f"{item_data['item_name']} status updated to {new_status}")
+                    # Refresh the page after updating status
+                    st.rerun()
+            with col4:
+                delete_item = st.button(f"Delete {item_data['item_name']}")
+                if delete_item:
+                    ref.child('Biryani').child(item_key).delete()
+                    st.success("Item deleted successfully!")
+                    # Refresh the page after deleting item
+                    st.rerun()
+
+    # Add new item form for Shawarma
+    st.markdown("### Biryani items")
+    new_item = st.text_input("Enter Biryani items")
+    price = st.number_input("Enter Price (Rupees)", min_value=0)
+
+    if st.button("Add Biryani items"):
+        if new_item and price:
+            # Save new item to Firebase under 'Shawarma'
+            new_item_ref = ref.child('Biryani').push()
             new_item_ref.set({
                 'item_name': new_item,
                 'price': price,

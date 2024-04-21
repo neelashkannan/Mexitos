@@ -19,3 +19,7 @@ def fetch_rice_items(ref):
 def fetch_starter_items(ref):
     starter_items = ref.child('starters').get()
     return starter_items
+
+def fetch_Biryani_items(ref):
+    Biryani_items = ref.child('Biryani').get()
+    return Biryani_items

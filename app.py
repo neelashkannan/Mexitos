@@ -9,7 +9,8 @@ from rice_button import display_rice_button
 from starter_button import display_starter_items_button
 import time
 import datetime
-
+import json
+from biryani_button import display_Biryani_items_button
 
 # Initialize Firebase (same as before)
 if not firebase_admin._apps:
@@ -35,10 +36,12 @@ hide_streamlit_style = """
 <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
-[data-testid="stToolbar"] {visibility: hidden !important;}
+header {visibility: hidden;}
 </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 # Get the last order number from Firebase
 last_order_number = ref.child('last_order_number').get() or 0
 order_number = int(last_order_number) + 1
@@ -61,6 +64,9 @@ if 'button_state_rice' not in st.session_state:
 
 if 'button_state_starter' not in st.session_state:
     st.session_state['button_state_starter'] = False
+
+if 'button_state_Biryani' not in st.session_state:
+    st.session_state['button_state_Biryani'] = False
 # Main title (same as before)
 with st.container():
     st.markdown("<h1 style='text-align: center; '>Mexitos</h1>", unsafe_allow_html=True)
@@ -82,6 +88,8 @@ display_rice_button(ref, st.session_state)
 
 display_starter_items_button(ref, st.session_state)
 
+display_Biryani_items_button(ref, st.session_state)
+
 # Display the cart and order button (same as before)
 with st.container():
     st.markdown("<h2 style='text-align: center; '>Your Cart</h2>", unsafe_allow_html=True)
@@ -90,7 +98,7 @@ with st.container():
     for item_id, quantity in st.session_state['cart'].items():
         if quantity > 0:
             item_data = (ref.child('chicken fry').child(item_id).get() or ref.child('bread_items').child(item_id).get() or ref.child('shawarma').child(item_id).get() or ref.child('rice and noodles items').child(item_id).get()
-                        or ref.child('starters').child(item_id).get())
+                        or ref.child('starters').child(item_id).get() or ref.child('Biryani').child(item_id).get())
             if item_data:
                 item_name = item_data['item_name']
                 item_price = item_data['price']
@@ -120,4 +128,4 @@ if len(st.session_state['cart']) > 0 and name and phone_number:
         time.sleep(5)
         st.session_state['cart'] = {}
 else:
-    st.warning("please enter both name and phone number to place order")
+    st.warning("please enter name and phone number to place order")
