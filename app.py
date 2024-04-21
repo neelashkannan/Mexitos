@@ -13,13 +13,18 @@ if not firebase_admin._apps:
 
 # Get a reference to the Firebase database
 ref = db.reference('/')
-hide_st_style = """
-<style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style>
-"""
-st.markdown(hide_st_style, unsafe_allow_html=True)
+custom_css = """
+        <style>
+        /* Hide Streamlit footer */
+        div[data-testid="stFooter"] {
+            display: none !important;
+        }
+        </style>
+        """
+
+# Hide Streamlit watermark
+st.markdown(custom_css, unsafe_allow_html=True)
+
 # Set page title and favicon
 st.set_page_config(
     page_title="Mexitos",
