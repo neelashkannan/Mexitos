@@ -120,12 +120,13 @@ if len(st.session_state['cart']) > 0 and name and phone_number:
 
         # Update the last order number in Firebase
         ref.child('last_order_number').set(order_number)
+        #time.sleep(5)
+        st.session_state['cart'] = {}
 
         # Show a success message
         st.success(f"Order placed successfully! Your order number is {order_number}.")
 
         # Empty the cart after 5 seconds
-        time.sleep(5)
-        st.session_state['cart'] = {}
+        
 else:
     st.warning("please enter name and phone number to place order")
