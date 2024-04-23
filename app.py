@@ -121,7 +121,7 @@ if len(st.session_state['cart']) > 0 and name and phone_number:
         # Update the last order number in Firebase
         ref.child('last_order_number').set(order_number)
         #time.sleep(5)
-        st.rerun()
+       
         st.session_state['cart'] = {}
 
         # Show a success message
