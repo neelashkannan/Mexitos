@@ -44,6 +44,14 @@ st.set_page_config(
     page_title="Mexitos",
     page_icon=":hamburger:"
 )
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Create a sidebar for navigation
 page = st.sidebar.selectbox("Choose a page", ["Orders", "Chicken Dry","Bread Items","Shawarma", "rice/noodles/kothu", "Starters", "Biryani"])
