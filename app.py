@@ -116,7 +116,8 @@ if 'cart' not in st.session_state:
 
 st.write(f"Current order number: {order_number}")
 
-if st.button("Place Order"):
+if len(st.session_state['cart']) > 0 and name and phone_number:
+    if st.button("Place Order"):
         order_data = {
             'order_number': order_number,
             'date': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
